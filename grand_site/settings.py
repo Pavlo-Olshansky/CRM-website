@@ -38,7 +38,7 @@ else:
     DEBUG = config('DEBUG', default=False, cast=bool)
 
 
-ALLOWED_HOSTS = ['my-grand-site-countinue.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -67,7 +67,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'grand_site.urls'
 
-DATABASE_URL = ''
 if ENV_ROLE == 'development':
     grand_db_1_PASS = get_env_variable("grand_db_1_PASS")
     DATABASES = {
