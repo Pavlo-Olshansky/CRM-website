@@ -38,7 +38,7 @@ else:
     DEBUG = config('DEBUG', default=False, cast=bool)
 
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['my-grand-site-countinue.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
