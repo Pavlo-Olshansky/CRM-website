@@ -23,7 +23,7 @@ from django.conf.urls.static import static
 # app_name = 'grand_site_1'
 urlpatterns = [
     url(r'^', include('home.urls', namespace='home'), name='home'),
-    url(r'^signup/$', 'subscribers.view.subscriber_new', name='sub_new'),
+    url(r'^signup/', include('subscribers.urls', namespace='subscribers'), name='subscribers'),
     url(r'^admin/', admin.site.urls),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

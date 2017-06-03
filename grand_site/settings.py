@@ -67,6 +67,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'grand_site.urls'
 
+DATABASE_URL = ''
 if ENV_ROLE == 'development':
     grand_db_1_PASS = get_env_variable("grand_db_1_PASS")
     DATABASES = {
@@ -80,6 +81,7 @@ if ENV_ROLE == 'development':
         }
     }
 else:
+    from decouple import config
     import dj_database_url
     DATABASES = {
     'default': dj_database_url.config(

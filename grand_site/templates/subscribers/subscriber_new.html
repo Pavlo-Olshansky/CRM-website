@@ -2,7 +2,7 @@
 {% load static %}
 {% block title %} Signup {% endblock title %}
 
-{% block head_top %}
+{% block header_top %}
 	<form id="user-reg-form" action="." method="post">
                 {% csrf_token %}
                 <!-- {# Username & Password Section #} -->
@@ -40,4 +40,4 @@
                 <input class="btn btn-primary" type="submit" value="submit">
             </form>
 
-{% endblock head_top %}
+{% endblock header_top %}

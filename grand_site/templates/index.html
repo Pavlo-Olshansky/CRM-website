@@ -28,7 +28,7 @@
                                class="p-r-none">Accounts</a></li>
                     {% else %}
                         <li><a href="">Login</a></li>
-                        <li><a href="{% url 'sub_new' %}" class="p-r-none">Sign Up</a></li>
+                        <li><a href="/signup/">Sign Up</a></li>
                     {% endif %}
 
 					{% endblock head %}
@@ -52,10 +52,10 @@
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae<br />
 						malesuada turpis. Nam pellentesque in ac aliquam. Aliquam tempor<br />
 						mi porta egestas maximus lorem ipsum dolor.</p>
-						{% endblock %}
 						<ul class="actions">
 							<li><a href="#" class="button big">Learn More</a></li>
 						</ul>
+						{% endblock %}
 					</section>
 
 				<!-- Items -->
