@@ -2,7 +2,28 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import ugettext_lazy as _
 
-class SubscriberForm(UserCreationForm):  # forms.Form
+from .models import Subscriber  
+
+
+class AddressMixin(forms.ModelForm):
+    class Meta:
+        model = Subscriber
+        fields = ('address_one', 'address_two', 'city', 'state',)
+        widgets = {
+            'address_one': forms.TextInput(attrs={'class':'form-control'}),
+            'address_two': forms.TextInput(attrs={'class':'form-control'}),
+            'city': forms.TextInput(attrs={'class':'form-control'}),
+            'state': forms.TextInput(attrs={'class':'form-control'}),
+        }  
+
+
+class SubscriberForm(AddressMixin, UserCreationForm):
+    first_name = forms.CharField(widget=forms.TextInput(
+        attrs=dict(required=True, max_length=30)), label=_("First name"))
+    
+    last_name = forms.CharField(widget=forms.TextInput(
+        attrs=dict(required=True, max_length=30)), label=_("Last name"))
+
     email = forms.EmailField(widget=forms.TextInput(
         attrs=dict(required=True, max_length=30)), label=_("Email address"))
     
