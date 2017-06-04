@@ -18,12 +18,29 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 
+admin.autodiscover()
 
-
-# app_name = 'grand_site_1'
 urlpatterns = [
+
+    # Home pages
     url(r'^', include('home.urls', namespace='home'), name='home'),
+
+    # Subscriber related URLs
     url(r'^signup/', include('subscribers.urls', namespace='subscribers'), name='subscribers'),
+
+    # Admin URL
     url(r'^admin/', admin.site.urls),
+
+    # Login/Logout URLs
+
+
+    # Account related URLs
+
+
+    # Contact related URLS
+
+
+    # Communication related URLs
+
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
