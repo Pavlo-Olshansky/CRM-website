@@ -13,7 +13,7 @@ class Subscriber(models.Model):
     stripe_id = models.CharField(max_length=30, blank=True)
 
     USERNAME_FIELD = 'username'
-	REQUIRED_FIELDS = ['address_one', 'city', 'state']
+    REQUIRED_FIELDS = ['address_one', 'city', 'state']
 
     class Meta:
         verbose_name_plural = 'subscribers'
@@ -25,14 +25,16 @@ class Subscriber(models.Model):
         # Set your secret key: remember to change this to your live secret key
         # in production. See your keys here https://manage.stripe.com/account
         stripe.api_key = settings.STRIPE_SECRET_KEY
+        # customer = stripe.Customer.create(description='test', source=token)
 
         # Get the credit card details submitted by the form
-        token = request.POST['stripeToken']
+        # token = request.POST['stripeToken']
+        token = request.POST.get('stripeToken')
 
         # Create a Customer
         stripe_customer = stripe.Customer.create(
-            card=token,
-            description=email
+            source=token,
+            email=email
         )
 
         # Save the Stripe ID to the customer's profile

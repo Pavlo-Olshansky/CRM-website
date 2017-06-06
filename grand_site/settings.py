@@ -156,8 +156,9 @@ STATICFILES_DIRS = (
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 # Stripe Key Settings
-STRIPE_SECRET_KEY = get_env_variable('STRIPE_SECRET_KEY')
-STRIPE_PUBLISHABLE_KEY = get_env_variable('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = get_env_variable("STRIPE_SECRET_KEY")
+STRIPE_PUBLISHABLE_KEY = get_env_variable("STRIPE_PUBLISHABLE_KEY")
 
 # Current Subscription Price
-SUBSCRIPTION_PRICE = 1500
+SUBSCRIPTION_PRICE = 100
+

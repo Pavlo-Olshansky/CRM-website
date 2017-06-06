@@ -27,7 +27,15 @@ def subscriber_new(request, template='subscribers/subscriber_new.html'):
             # Create the User record
             user = User(username=username, email=email)
             user.set_password(password)
-            user.save()
+            # user.save()
+            try:
+                user.save()
+            except Exception as e:
+                form._errors['username'] = form.error_class(['This username is already taken!'])
+                return render(request, template,
+                    {'form':form,
+                     'STRIPE_PUBLISHABLE_KEY':settings.STRIPE_PUBLISHABLE_KEY}
+                )
 
             # Create Subscriber Record
             address_one = form.cleaned_data['address_one']
