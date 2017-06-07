@@ -5,7 +5,7 @@
     <div id="content-container" class="container p-none">
         <div class="lgn-container col-lg-8">
             <form id="login-form" method="post" 
-                  action="{% url 'django.contrib.auth.views.login' %}">
+                  action="/login/">
                 {% csrf_token %}
                 <table class="table">
                     <tr>
@@ -26,8 +26,7 @@
                     </p>
                 {% endif %}
 
-                <input type="submit" value="Login" 
-                       class="btn btn-primary pull-right" />
+                <input type="submit" value="Login" />
                 <input type="hidden" name="next" value="{{ next }}" />
             </form>
         </div>
