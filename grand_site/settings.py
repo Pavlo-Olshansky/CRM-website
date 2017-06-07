@@ -162,3 +162,5 @@ STRIPE_PUBLISHABLE_KEY = get_env_variable("STRIPE_PUBLISHABLE_KEY")
 # Current Subscription Price
 SUBSCRIPTION_PRICE = 100
 
+LOGIN_REDIRECT_URL = '/account/list/'
+

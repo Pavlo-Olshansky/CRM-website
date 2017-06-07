@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views
 
 admin.autodiscover()
 
@@ -33,11 +34,11 @@ urlpatterns = [
 
     # Login/Logout URLs
     url(r'^login/$',
-    'django.contrib.auth.views.login', {'template_name': 'login.html'}
+        views.login, {'template_name': 'login.html'}
     ),
 
     url(r'^logout/$',
-        'django.contrib.auth.views.logout', {'next_page': '/login/'}
+        views.logout, {'next_page': '/login/'}
     ),
 
     # Account related URLs
