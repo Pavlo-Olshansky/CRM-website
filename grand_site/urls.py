@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
+from accounts.views import AccountList
 
 admin.autodiscover()
 
@@ -42,6 +43,9 @@ urlpatterns = [
     ),
 
     # Account related URLs
+    url(r'^account/list/$',
+        AccountList.as_view(), name='account_list'
+    ),
 
 
     # Contact related URLS
