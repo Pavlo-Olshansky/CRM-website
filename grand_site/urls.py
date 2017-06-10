@@ -19,6 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from accounts.views import AccountList
+from accounts import views
 
 admin.autodiscover()
 
@@ -43,13 +44,14 @@ urlpatterns = [
     ),
 
     # Account related URLs
+    url(r'^account/new/$', views.account_cru, name='account_new'),
+
     url(r'^account/list/$',
         AccountList.as_view(), name='account_list'
     ),
 
     url(r'^account/(?P<uuid>[\w-]+)/', include('accounts.urls')),
 
-    url(r'^account/new/$', 'grand_site.accounts.views.account_cru', name='account_new'
 
 
 

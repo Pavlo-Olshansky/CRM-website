@@ -13,7 +13,7 @@ from .forms import AccountForm
 
 class AccountList(ListView):
     model = Account
-    paginate_by = 2
+    paginate_by = 5
     template_name = 'accounts/account_list.html'
     context_object_name = 'accounts'
 
@@ -62,10 +62,8 @@ def account_cru(request):
             account = form.save(commit=False)
             account.owner = request.user
             account.save()
-            redirect_url = reverse(
-                'grand_site.accounts.views.account_detail',
-                args=(account.uuid,)
-            )
+            redirect_url = reverse('account_detail', args=(account.uuid,))
+
             return HttpResponseRedirect(redirect_url)
     else:
         form = AccountForm()
