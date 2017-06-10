@@ -6,7 +6,7 @@ from .models import Account
 
 class AccountList(ListView):
     model = Account
-    paginate_by = 12
+    paginate_by = 2
     template_name = 'accounts/account_list.html'
     context_object_name = 'accounts'
 
@@ -27,3 +27,20 @@ class AccountList(ListView):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(AccountList, self).dispatch(*args, **kwargs)
+
+
+from django.http import HttpResponseForbidden
+from django.shortcuts import render
+
+@login_required()
+def account_detail(request, uuid):
+
+    account = Account.objects.get(uuid=uuid)
+    if account.owner != request.user:
+            return HttpResponseForbidden()
+
+    variables = {
+        'account': account,
+    }
+
+    return render(request, 'accounts/account_detail.html', variables)
