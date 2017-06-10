@@ -49,6 +49,8 @@ urlpatterns = [
 
     url(r'^account/(?P<uuid>[\w-]+)/', include('accounts.urls')),
 
+    url(r'^account/new/$', 'grand_site.accounts.views.account_cru', name='account_new'
+
 
 
     # Contact related URLS
