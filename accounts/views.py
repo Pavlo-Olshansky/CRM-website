@@ -83,9 +83,6 @@ def account_cru(request, uuid=None):
         'account':account
     }
 
-    if request.is_ajax():
-        template = 'accounts/account_item_form.html'
-    else:
-        template = 'accounts/account_cru.html'
+    template = 'accounts/account_cru.html'
 
     return render(request, template, variables)

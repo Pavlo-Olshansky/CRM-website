@@ -1,9 +1,8 @@
 <form id="gi-form"
-      action="
-      {% if account.uuid %}
-        {{ account.get_update_url }}
+      action="{% if account.uuid %}
+      {{ account.get_update_url }}
       {% else %}
-        {% url 'account_new' %}
+      {% url 'account_new' %}
       {% endif %}"
       method="post">
     {% csrf_token %}
