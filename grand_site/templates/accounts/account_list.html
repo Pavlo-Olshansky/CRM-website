@@ -16,7 +16,7 @@
 
                 {# Account Search Form #}
 				<form action="{% url 'account_list' %}" method="get">
-				    <input id="al-search" type="text"
+				    <input id="al-search" placeholder="Account name" autofocus ="" type="text"
 				           name="account" value="{{ request.GET.account }}"
 				           class="form-control" />
 				    <input type="submit"
@@ -42,14 +42,14 @@
 			            {% if page_obj.has_previous %}
 			                <li class="pull-left">
 			                    <a href="{% url 'account_list' %}?page={{ page_obj.previous_page_number }}
-			                    {% if request.GET.account %}&account={{ request.GET.account }}{% endif %}">Prev</a>
+			                    {% if request.GET.account %}&account={{ request.GET.account }}{% endif %}">Prev Page</a>
 			                </li>
 			            {% endif %}
 			            
 			            {% if page_obj.has_next %}
 			                <li class="pull-right">
 			                    <a href="{% url 'account_list' %}?page={{ page_obj.next_page_number }}
-			                    {% if request.GET.account %}&account={{ request.GET.account }}{% endif %}">Next</a>
+			                    {% if request.GET.account %}&account={{ request.GET.account }}{% endif %}">Next Page</a>
 			                </li>
 			            {% endif %}
 			        </ul>
