@@ -49,7 +49,7 @@
 					$img = $header.find('img');
 
 				// Set background.
-					// $a.css('background-image', 'url(' + $img.attr('src') + ')');
+					$a.css('background-image', 'url(' + $img.attr('src') + ')');
 
 				// Remove original image.
 					$img.remove();

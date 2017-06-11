@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-{% load static %}<!--
+{% load static %}
+<!--
 	Epilogue by TEMPLATED
 	templated.co @templatedco
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
@@ -62,7 +63,7 @@
 					<section class="main items">
 						<article class="item">
 							<header>
-								<a href="#"><img src="{{ STATIC_URL }}images/pic01.jpg" alt="" /></a>
+								<a href="#"><img src="{% static "images/pic01.jpg" %}" alt="" /></a>
 								<h3>Feugiat et faucibus</h3>
 							</header>
 							{% block left_top %}
@@ -86,7 +87,7 @@
 						</article>
 						<article class="item">
 							<header>
-								<a href="#"><img src="{{ STATIC_URL }}images/pic03.jpg" alt="" /></a>
+								<a href="#"><img src="{% static 'images/pic03.jpg' %}" alt="" /></a>
 								<h3>Lorem massa nulla</h3>
 							</header>
 							{% block left_bottom %}
@@ -98,7 +99,7 @@
 						</article>
 						<article class="item">
 							<header>
-								<a href="#"><img src="{{ STATIC_URL }}images/pic04.jpg" alt="" /></a>
+								<a href="#"><img src="{% static 'images/pic04.jpg' %}" alt="" /></a>
 								<h3>Ipsum sed tempus</h3>
 							</header>
 							{% block right_bottom %}
