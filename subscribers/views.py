@@ -47,15 +47,16 @@ def subscriber_new(request, template='subscribers/subscriber_new.html'):
             sub.save()
 
             # Process payment (via Stripe)
-            # fee = settings.SUBSCRIPTION_PRICE
-            # try:
-            #     stripe_customer = sub.charge(request, email, fee)
-            # except stripe.StripeError as e:
-            #     form._errors[NON_FIELD_ERRORS] = form.error_class([e.args[0]])
-            #     return render(request, template,
-            #         {'form':form,
-            #          'STRIPE_PUBLISHABLE_KEY':settings.STRIPE_PUBLISHABLE_KEY}
-            #     )
+            if request.POST.get("signup-only"):
+                fee = settings.SUBSCRIPTION_PRICE
+                try:
+                    stripe_customer = sub.charge(request, email, fee)
+                except stripe.StripeError as e:
+                    form._errors[NON_FIELD_ERRORS] = form.error_class([e.args[0]])
+                    return render(request, template,
+                        {'form':form,
+                         'STRIPE_PUBLISHABLE_KEY':settings.STRIPE_PUBLISHABLE_KEY}
+                    )
             
             # Auto login the user
             a_u = authenticate(username=username, password=password)

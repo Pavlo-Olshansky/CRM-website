@@ -80,31 +80,40 @@
                 </tr>
             </tbody>
         </table>
-        <input id="payment-submit" type="submit" value="Signup" class="btn btn-primary"/>
+        <input id="user-reg-form" type="submit" value="Signup" class="btn btn-primary"/>
     </form>
 
 
     {# Credit Card Section #}
-    <h5 class="sn-sh">CREDIT CARD</h5>
+    <h5 class="sn-sh">CREDIT CARD(not realized yet)</h5>
     <form id="payment-form" action="." method="post">
         <table class="table">
             <tbody>
+
                 <tr>
                     <th>Card Number</th>
                     <th>CVC</th>
-                    <th>Exp Month</th>
-                    <th>Exp Year</th>
                 </tr>
+
                 <tr>
-                    <td><input type="text" size="32" data-stripe="number"
+                    <td><input type="text" size="32" data-stripe="number" placeholder="1234567890123456"
                                class="col-md-10 form-control"/></td>
-                    <td><input type="text" size="4" data-stripe="cvc"
+                    <td><input type="text" size="4" data-stripe="cvc" placeholder="123"
                                class="col-md-2 form-control"/></td>
-                    <td><input type="text" size="2" data-stripe="exp-month"
+                </tr>
+
+                <tr>
+                <th>Exp Month</th>
+                <th>Exp Year</th>
+                </tr>
+
+                <tr>
+                    <td><input type="text" size="2" data-stripe="exp-month" placeholder="12"
                                class="col-md-1 form-control"/></td>
-                    <td><input type="text" size="4" data-stripe="exp-year"
+                    <td><input type="text" size="4" data-stripe="exp-year" placeholder="2020"
                                class="col-md-1 form-control"/></td>
                 </tr>
+                
             </tbody>
         </table>
         <span class="payment-errors label label-danger"></span>
@@ -113,7 +122,7 @@
                 <p class="label label-danger">{{ err }}</p>
             {% endfor %}
         </div>
-        <input id="payment-submit" type="submit" value="Signup and donate $10!"
+        <input id="payment-submit" type="submit" value="Signup and donate $10!" name="signup-only"
                class="btn btn-primary"/>
     </form>
 
