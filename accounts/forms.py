@@ -11,6 +11,7 @@ class AccountForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(
                 attrs={
+                    'autofocus': 'autofocus',
                     'placeholder':'Company',
                     'class':'col-md-12 form-control'
                 }
