@@ -53,10 +53,9 @@ urlpatterns = [
     url(r'^account/(?P<uuid>[\w-]+)/', include('accounts.urls')),
 
 
-
-
     # Contact related URLS
-
+    url(r'^contacts/(?P<uuid>[\w-]+)/', include('contacts.urls')),
+    
 
     # Communication related URLs
 
