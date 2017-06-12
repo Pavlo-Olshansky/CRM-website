@@ -48,12 +48,12 @@ def account_detail(request, uuid):
     if account.owner != request.user:
             return HttpResponseForbidden()
 
-    contacts = Contact.objects.filter(account=account)
+    contact = Contact.objects.filter(account=account)
 
 
     variables = {
         'account': account,
-        'contacts': contacts,
+        'contact': contact,
     }
 
     return render(request, 'accounts/account_detail.html', variables)
