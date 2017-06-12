@@ -7,9 +7,9 @@ from .models import Contact
 @login_required()
 def contact_detail(request, uuid):
 
-	contact = Contact.objects.get(uuid=uuid)
+    contact = Contact.objects.get(uuid=uuid)
 
-	return render(request,
-		'contacts/contact_detail.html',
-		{'contact': contact}
-		)
+    return render(request, 
+                'contacts/contact_detail.html', 
+                {'contact': contact}
+    )
