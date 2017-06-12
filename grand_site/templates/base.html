@@ -24,12 +24,12 @@
 					<p>A free responsive site template by <a href="https://templated.co">TEMPLATED</a></p>
 
 					{% if user.is_authenticated %}
-                        <li><a href="/logout/">Logout</a></li>
-                        <li><a href="{% url 'account_list' %}"
-                               class="p-r-none">Accounts</a></li>
+                        <a href="/logout/">Logout</a>
+                        <br><a href="{% url 'account_list' %}"
+                               class="p-r-none">Accounts</a>
                     {% else %}
-                        <li><a href="/login/">Login</a></li>
-                        <li><a href="/signup/">Sign Up</a></li>
+                        <a href="/login/">Login</a>
+                        <br><a href="/signup/">Sign Up</a>
                     {% endif %}
 
 					{% endblock head %}

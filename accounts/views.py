@@ -11,7 +11,7 @@ from django.shortcuts import get_object_or_404
 
 from .models import Account
 from .forms import AccountForm
-from .contacts.models import Contact
+from contacts.models import Contact
 
 
 class AccountList(ListView):
