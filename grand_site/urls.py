@@ -70,7 +70,7 @@ urlpatterns = [
         ContactDelete.as_view(), name='contact_delete'),
 
     # Communication related URLs
-    utl(r'^comm/(?P<uuid>[\w-]+)/', 
+    url(r'^comm/(?P<uuid>[\w-]+)/', 
         include('communications.urls')),
 
 
