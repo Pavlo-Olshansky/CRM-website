@@ -9,7 +9,6 @@ class CommunicationForm(forms.ModelForm):
         widgets = {
             'subject': forms.TextInput(
                 attrs={
-                	'autofocus': 'aurofocus',
                     'placeholder':'Subject', 
                     'class':'form-control'
                 }

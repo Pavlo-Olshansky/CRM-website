@@ -40,7 +40,10 @@
         {# List Communications #}
 		<div id="co-container" class="ad-container">
 		    <div class="ad-headers">
-		        <h4 class="ad-mh m-none">Communications</h4>
+		        <h4 class="ad-mh m-none">Communications
+		        <!-- ?account={{ account.id }} --><a href="{% url 'comm_new' %}" 
+					       class="btn btn-link p-r-none">+ Add New Communication</a>
+					</span></h4>
 		    </div>
 		    <hr>
 		    <div id="co-body" class="ad-container">

@@ -78,4 +78,6 @@ urlpatterns = [
         include('communications.urls')),
 
 
+
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
