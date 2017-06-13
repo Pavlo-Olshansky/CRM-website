@@ -22,6 +22,7 @@ from accounts.views import AccountList
 from accounts import views as accounts_views
 from contacts import views as contacts_views
 from contacts.views import ContactDelete
+from communications.views import comm_cru
 
 
 admin.autodiscover()
@@ -70,6 +71,9 @@ urlpatterns = [
         ContactDelete.as_view(), name='contact_delete'),
 
     # Communication related URLs
+    url(r'^comm/new/$', 
+        comm_cru, name='comm_new'),
+
     url(r'^comm/(?P<uuid>[\w-]+)/', 
         include('communications.urls')),
 
