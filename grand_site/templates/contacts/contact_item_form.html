@@ -30,8 +30,12 @@
     </table>
     <input id="id_account" name="account"
            type="hidden"
-           value="{% if request.GET.account %}
-           {{ request.GET.account }}{% else %}{{ account.id }}{% endif %}"/>
+           value="
+           {% if request.GET.account %}
+            {{ request.GET.account }}
+           {% else %}
+            {{ account.id }}
+           {% endif %}"/>
     <input id="contact-submit" class="btn btn-primary m-r-none" type="submit" value="SAVE"/>
 </form>
 <!-- Line 26: When creating a Contact, our app needs to know which Account to relate it to. To let the Contact Create/Update view know, we pass the Account ID via a hidden <input> element. If this is a new account form the ID will come from a URL parameter. If this the editing of an account the ID will come from the view. -->
