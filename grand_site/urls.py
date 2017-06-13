@@ -20,19 +20,23 @@ from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from accounts.views import AccountList
 from accounts import views
+from contacts import views
 
 admin.autodiscover()
 
 urlpatterns = [
 
     # Home pages
-    url(r'^', include('home.urls', namespace='home'), name='home'),
+    url(r'^', 
+        include('home.urls', namespace='home'), name='home'),
 
     # Subscriber related URLs
-    url(r'^signup/', include('subscribers.urls', namespace='subscribers'), name='subscribers'),
+    url(r'^signup/', 
+        include('subscribers.urls', namespace='subscribers'), name='subscribers'),
 
     # Admin URL
-    url(r'^admin/', admin.site.urls),
+    url(r'^admin/', 
+        admin.site.urls),
 
     # Login/Logout URLs
     url(r'^login/$',
@@ -44,17 +48,22 @@ urlpatterns = [
     ),
 
     # Account related URLs
-    url(r'^account/new/$', views.account_cru, name='account_new'),
+    url(r'^account/new/$', 
+        views.account_cru, name='account_new'),
 
     url(r'^account/list/$',
-        AccountList.as_view(), name='account_list'
-    ),
+        AccountList.as_view(), name='account_list'),
 
-    url(r'^account/(?P<uuid>[\w-]+)/', include('accounts.urls')),
+    url(r'^account/(?P<uuid>[\w-]+)/', 
+        include('accounts.urls')),
 
 
     # Contact related URLS
-    url(r'^contacts/(?P<uuid>[\w-]+)/', include('contacts.urls')),
+    url(r'^contacts/(?P<uuid>[\w-]+)/', 
+        include('contacts.urls')),
+
+    url(r'^contact/new/$', 
+        views.contact_cru, name='contact_new'),
     
 
     # Communication related URLs
