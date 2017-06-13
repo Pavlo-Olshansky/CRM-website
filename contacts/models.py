@@ -27,10 +27,14 @@ class Contact(models.Model):
 		return '{}'.format(self.full_name)
 
 	@models.permalink
+	def get_absolute_url(self):
+		return 'contact_detail', [self.uuid]
+
+	@models.permalink
 	def get_update_url(self):
 		return 'contact_update', [self.uuid]
 
 	@models.permalink
 	def get_delete_url(self):
-		return 'contact_delete', [self.uuid]
+		return 'contact_delete', [self.id]
 

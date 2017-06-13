@@ -21,6 +21,7 @@ from django.contrib.auth import views as auth_views
 from accounts.views import AccountList
 from accounts import views as accounts_views
 from contacts import views as contacts_views
+from contacts.views import ContactDelete
 
 admin.autodiscover()
 
@@ -57,14 +58,15 @@ urlpatterns = [
     url(r'^account/(?P<uuid>[\w-]+)/', 
         include('accounts.urls')),
 
-
     # Contact related URLS
+    url(r'^contact/new/$', 
+       contacts_views.contact_cru, name='contact_new'),
+
     url(r'^contacts/(?P<uuid>[\w-]+)/', 
         include('contacts.urls')),
 
-    url(r'^contact/new/$', 
-       contacts_views.contact_cru, name='contact_new'),
-    
+    url(r'^contact/(?P<pk>[\w-]+)/delete/$',
+        ContactDelete.as_view(), name='contact_delete'),
 
     # Communication related URLs
 
