@@ -11,7 +11,7 @@ class ContactForm(forms.ModelForm):
         )
         widgets = {
             'first_name': forms.TextInput(
-                attrs={'aurofocus': 'autofocus', 'placeholder':'First Name', 'class':'form-control'}
+                attrs={'autofocus': 'autofocus', 'placeholder':'First Name', 'class':'form-control'}
             ),
             'last_name': forms.TextInput(
                 attrs={'placeholder':'Last Name', 'class':'form-control'}
