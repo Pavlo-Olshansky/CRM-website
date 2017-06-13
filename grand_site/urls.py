@@ -23,6 +23,7 @@ from accounts import views as accounts_views
 from contacts import views as contacts_views
 from contacts.views import ContactDelete
 
+
 admin.autodiscover()
 
 urlpatterns = [
@@ -69,6 +70,8 @@ urlpatterns = [
         ContactDelete.as_view(), name='contact_delete'),
 
     # Communication related URLs
+    utl(r'^comm/(?P<uuid>[\w-]+)/', 
+        include('communications.urls')),
 
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
