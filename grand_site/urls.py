@@ -19,8 +19,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from accounts.views import AccountList
-from accounts import views
-from contacts import views
+from accounts import views as accounts_views
+from contacts import views as contacts_views
 
 admin.autodiscover()
 
@@ -49,7 +49,7 @@ urlpatterns = [
 
     # Account related URLs
     url(r'^account/new/$', 
-        views.account_cru, name='account_new'),
+        accounts_views.account_cru, name='account_new'),
 
     url(r'^account/list/$',
         AccountList.as_view(), name='account_list'),
@@ -63,7 +63,7 @@ urlpatterns = [
         include('contacts.urls')),
 
     url(r'^contact/new/$', 
-        views.contact_cru, name='contact_new'),
+       contacts_views.contact_cru, name='contact_new'),
     
 
     # Communication related URLs
