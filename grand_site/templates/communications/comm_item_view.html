@@ -8,7 +8,9 @@
     <td><a class="pen comm-control comm-edit" 
                href="{{ comm.get_update_url }}?account={{ account.id }}">Edit</a></td>
     {# Comm Delete URL #}
-    <td><a class="cancel comm-control" 
-               href="">Delete</a>
+    {# Comm Delete URL #}
+    
+    <td><a class="cancel comm-control"
+       href="{{ comm.get_delete_url }}?account={{ account.id }}">Delete</a>
     </td>
 </tr>
