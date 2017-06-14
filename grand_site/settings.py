@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'accounts',
     'contacts',
     'communications',
+    'pipeline',
 ]
 
 MIDDLEWARE = [
@@ -167,3 +168,33 @@ SUBSCRIPTION_PRICE = 1000
 
 LOGIN_REDIRECT_URL = '/account/list/'
 
+# django-pipeline config
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.jsmin.JSMinCompressor'
+PIPELINE_CSS_COMPRESSOR = 'mvp.plans.CSSMin.CSSCompressor'
+
+
+PIPELINE_CSS = {
+    'site_css': {
+        'source_filenames': (
+          'css/font-awesome.min.css',
+          'css/main.css',
+        ),
+        'extra_context': {
+            'media': 'screen',
+        },
+        'output_filename': 'css/site.css',
+    },
+}
+
+PIPELINE_JS = {
+    'site_js': {
+        'source_filenames': (
+          'js/jquery.min.js',
+          'js/main.js',
+          'js/skel.min.js',
+          'js/util.js',
+        ),
+        'output_filename': 'js/site.js',
+    }
+}
