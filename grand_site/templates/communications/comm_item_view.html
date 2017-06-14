@@ -1,15 +1,14 @@
-<li class="co-item">
-    <h5>{{ comm.subject }}
-        <span>
-            {# Comm Delete URL #}
-            <a class="cancel comm-control" 
-               href=""></a>
-            {# Comm Edit URL #}
-            <a class="pen comm-control comm-edit" 
-               href="{{ comm.get_update_url }}?account={{ account.id }}"></a>
-        </span>
-    </h5>
-    <p><sub>on {{ comm.date }}</sub>
-    <p>{{ comm.notes }}</p>
-    <hr>
-</li>
+<tr>
+    <td class="ci-td-p-l">{{ comm.subject }}</td>
+    <td>on {{ comm.date }}</td>
+    <td>{{ comm.notes }}</td>
+    <td><a class="cancel comm-control" 
+               href=""></a></td>
+    {# Comm Edit URL #}
+    <td><a class="pen comm-control comm-edit" 
+               href="{{ comm.get_update_url }}?account={{ account.id }}">Edit</a></td>
+    {# Comm Delete URL #}
+    <td><a class="cancel comm-control" 
+               href="">Delete</a>
+    </td>
+</tr>

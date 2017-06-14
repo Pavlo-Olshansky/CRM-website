@@ -9,7 +9,7 @@ from django.shortcuts import get_object_or_404
 
 from .models import Communication
 from .forms import CommunicationForm  
-from crmapp.accounts.models import Account
+from accounts.models import Account
 
 
 @login_required()
@@ -46,6 +46,7 @@ def comm_cru(request, uuid=None, account=None):
             # return the user to the account detail view
             reverse_url = reverse('account_detail', 
             	args=(account.uuid,))
+            return HttpResponseRedirect(reverse_url)
         else:
             # if the form isn't valid, still fetch the account so it can be passed to the template
             account = form.cleaned_data['account']
@@ -61,7 +62,7 @@ def comm_cru(request, uuid=None, account=None):
         'comm':comm,
         'account': account
     }
-    
+
     template = 'communications/comm_cru.html'
 
     return render(request, template, variables)

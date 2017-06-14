@@ -37,7 +37,7 @@ def contact_cru(request, uuid=None, account=None):
 
     if request.POST:
         form = ContactForm(request.POST, instance=contact)
-        if form.is_valid():
+        if form.is_valid(): 
             # make sure the user owns the account
             account = form.cleaned_data['account']
             if account.owner != request.user:

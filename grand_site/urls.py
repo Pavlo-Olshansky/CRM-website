@@ -71,7 +71,7 @@ urlpatterns = [
         ContactDelete.as_view(), name='contact_delete'),
 
     # Communication related URLs
-    url(r'^comm/new/$', 
+    url(r'^comm/new/?account=', 
         comm_cru, name='comm_new'),
 
     url(r'^comm/(?P<uuid>[\w-]+)/', 
