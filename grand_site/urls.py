@@ -85,7 +85,7 @@ urlpatterns = [
         CommDelete.as_view(), name='comm_delete'),
 
     # Social login
-    url(r'^oauth/', include('social_django.urls', namespace='social')),
+    # url(r'^oauth/', include('social_django.urls', namespace='social')),
 
 
     # url(r'^comments/', include('django_comments.urls')),
