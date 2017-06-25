@@ -1,0 +1,6 @@
+<h2>Add a comment</h2>
+    <form id='comment_form' 
+    method="POST">
+	{% csrf_token %}
+	{{ comment_form.as_p }}
+	<input type='submit' name='new_comment' value='Submit'>

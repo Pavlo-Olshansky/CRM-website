@@ -56,11 +56,12 @@ INSTALLED_APPS = [
     'communications',
 
     'pipeline',
-    'django_comments',
-    'django.contrib.sites',
+    'social_django',
+    # 'django_comments',
+    # 'django.contrib.sites',
 ]
-SITE_ID = 2
-COMMENTS_APP = 'django_comments'
+# SITE_ID = 2
+# COMMENTS_APP = 'django_comments'
 
 # $> ./manage.py shell
 # >>> from django.contrib.sites.models import Site

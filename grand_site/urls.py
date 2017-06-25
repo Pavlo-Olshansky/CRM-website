@@ -85,7 +85,7 @@ urlpatterns = [
         CommDelete.as_view(), name='comm_delete'),
 
 
-    url(r'^comments/', include('django_comments.urls')),
+    # url(r'^comments/', include('django_comments.urls')),
 
     # url(r'^comments/', include('django_comments_xtd.urls')),
     # url(r'^feeds/comments/$', LatestCommentFeed(), name='comments-feed'),    

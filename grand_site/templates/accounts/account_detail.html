@@ -75,29 +75,24 @@
 		</div>
     <!-- </div> -->
 
-    <h2><a href="{% url 'add_comment' uuid=account.uuid %}">Leave a comment</a></h2>
+    {# Comment Section #}
+    <h3>Leave a comment</h3>
     <p> There is {{account.comments.count}} comments</p>
     <p>{{account.comment.count}}</p>
+    
+    {# Comment View #}
     <table id="comment-table" class="table2 table-comment">
         <tbody>
     		{% for comment in account.comments.all %}  {# related name - comments #}
-	        	<tr>
-	    			<td><p>on {{ comment.created }} from <b>{{ comment.user }}</b>:</p></td>
-        			<td><p>{{ comment.body }}</p></td>
-        		</tr>
-    		{% empty %}
-        		<p>There is no comments</p>
+				{% include 'comments/comments_item_view.html' %}
+			{% empty %}
+				<p>There is no comments</p>
     		{% endfor %}
     	</tbody>
     </table>
 
-    <h2>Add a comment</h2>
-    <form id='comment_form' 
-    method="POST">
-	{% csrf_token %}
-	{{ comment_form.as_p }}
-	<input type='submit' name='new_comment' value='Submit'>
-
-
+    {# Comment Form #}
+	{% include 'comments/comments_item_form.html' %}
+    
 
 {% endblock header_top %}
