@@ -56,8 +56,9 @@ INSTALLED_APPS = [
     'communications',
 
 
-    'pipeline',
-    'social_django',
+    # 'pipeline',
+    # 'social_django',
+    
     # 'django_comments',
     # 'django.contrib.sites',
 ]
@@ -263,36 +264,38 @@ LOGIN_REDIRECT_URL = '/account/list/'
 #         'output_filename': 'js/site_css.js',
 #     }
 # }
-PIPELINE = {
-    'STYLESHEETS': {
-        'site_css': {
-            'source_filenames': (
-              'css/font-awesome.min.css',
-              'css/main.css',
-              'css/images/overlay.png',
-            ),
-            'extra_context': {
-                'media': 'screen',
-            },
-            'output_filename': 'css/site_css.css',
-        },
-    },
-    'JAVASCRIPT': {
-        'site_js': {
-            'source_filenames': (
-              'js/jquery.min.js',
-              'js/main.js',
-              'js/skel.min.js',
-              'js/util.js',
-            ),
-            'output_filename': 'js/site_css.js',
-        }
-    }
-}
 
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'pipeline.finders.PipelineFinder',
-)
+
+# PIPELINE = {
+#     'STYLESHEETS': {
+#         'site_css': {
+#             'source_filenames': (
+#               'css/font-awesome.min.css',
+#               'css/main.css',
+#               'css/images/overlay.png',
+#             ),
+#             'extra_context': {
+#                 'media': 'screen',
+#             },
+#             'output_filename': 'css/site_css.css',
+#         },
+#     },
+#     'JAVASCRIPT': {
+#         'site_js': {
+#             'source_filenames': (
+#               'js/jquery.min.js',
+#               'js/main.js',
+#               'js/skel.min.js',
+#               'js/util.js',
+#             ),
+#             'output_filename': 'js/site_css.js',
+#         }
+#     }
+# }
+
+# STATICFILES_FINDERS = (
+#     'django.contrib.staticfiles.finders.FileSystemFinder',
+#     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#     'pipeline.finders.PipelineFinder',
+# )
 
