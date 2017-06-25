@@ -161,14 +161,14 @@ TEMPLATES = [
     },
 ]
 
-AUTHENTICATION_BACKENDS = (
-    'social_core.backends.github.GithubOAuth2',
-    'social_core.backends.twitter.TwitterOAuth',
-    'social_core.backends.facebook.FacebookOAuth2',
-    'social_core.backends.google.GoogleOAuth2',
+# AUTHENTICATION_BACKENDS = (
+#     'social_core.backends.github.GithubOAuth2',
+#     'social_core.backends.twitter.TwitterOAuth',
+#     'social_core.backends.facebook.FacebookOAuth2',
+#     'social_core.backends.google.GoogleOAuth2',
 
-    'django.contrib.auth.backends.ModelBackend',
-)
+#     'django.contrib.auth.backends.ModelBackend',
+# )
 
 # SOCIAL_AUTH_GITHUB_KEY = get_env_variable('SOCIAL_AUTH_GITHUB_KEY')
 # SOCIAL_AUTH_GITHUB_SECRET = get_env_variable('SOCIAL_AUTH_GITHUB_SECRET')
