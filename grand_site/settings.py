@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'contacts',
     'communications',
 
+
     'pipeline',
     'social_django',
     # 'django_comments',
@@ -104,6 +105,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'grand_site.urls'
@@ -148,10 +150,33 @@ TEMPLATES = [
 			    "django.template.context_processors.media",
 			    "django.template.context_processors.static",
 			    "django.template.context_processors.tz",
+
+                # Social login
+                'social_django.context_processors.backends',  
+                'social_django.context_processors.login_redirect',
+
             ],
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_GITHUB_KEY = get_env_variable('SOCIAL_AUTH_GITHUB_KEY')
+SOCIAL_AUTH_GITHUB_SECRET = get_env_variable('SOCIAL_AUTH_GITHUB_SECRET')
+
+SOCIAL_AUTH_TWITTER_KEY = get_env_variable('SOCIAL_AUTH_TWITTER_KEY')
+SOCIAL_AUTH_TWITTER_SECRET = get_env_variable('SOCIAL_AUTH_TWITTER_SECRET')
+
+SOCIAL_AUTH_FACEBOOK_KEY = get_env_variable('SOCIAL_AUTH_FACEBOOK_KEY')
+SOCIAL_AUTH_FACEBOOK_SECRET = get_env_variable('SOCIAL_AUTH_FACEBOOK_SECRET')
 
 
 WSGI_APPLICATION = 'grand_site.wsgi.application'
@@ -204,6 +229,8 @@ STRIPE_PUBLISHABLE_KEY = get_env_variable("STRIPE_PUBLISHABLE_KEY")
 # Current Subscription Price
 SUBSCRIPTION_PRICE = 1000
 
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = '/account/list/'
 
 # django-pipeline config
