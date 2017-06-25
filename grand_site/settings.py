@@ -106,7 +106,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'social_django.middleware.SocialAuthExceptionMiddleware',
+    # 'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'grand_site.urls'
@@ -153,8 +153,8 @@ TEMPLATES = [
 			    "django.template.context_processors.tz",
 
                 # Social login
-                'social_django.context_processors.backends',  
-                'social_django.context_processors.login_redirect',
+                # 'social_django.context_processors.backends',  
+                # 'social_django.context_processors.login_redirect',
 
             ],
         },
