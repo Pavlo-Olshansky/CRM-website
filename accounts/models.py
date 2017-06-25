@@ -33,3 +33,19 @@ class Account(models.Model):
     @models.permalink
     def get_delete_url(self):
         return 'account_delete', [self.uuid]
+
+
+class Comment(models.Model):
+    account = models.ForeignKey(Account, related_name='comments')
+    user = models.CharField(max_length=250)
+    email = models.EmailField()
+    body = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+    approved = models.BooleanField(default=False)
+
+    def approved(self):
+        self.approved = True
+        self.save()
+
+    def __str__(self):
+        return self.user

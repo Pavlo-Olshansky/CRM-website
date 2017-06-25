@@ -54,8 +54,44 @@ INSTALLED_APPS = [
     'accounts',
     'contacts',
     'communications',
+
     'pipeline',
+    'django_comments',
+    'django.contrib.sites',
 ]
+SITE_ID = 2
+COMMENTS_APP = 'django_comments'
+
+# $> ./manage.py shell
+# >>> from django.contrib.sites.models import Site
+# >>> site = Site()
+# >>> site.domain = 'example.com'
+# >>> site.name = 'example.com'
+# >>> site.save()
+
+# COMMENTS_APP = 'django_comments_xtd'
+
+# # Either enable sending mail messages to the console:
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# # Or set up the EMAIL_* settings so that Django can send emails:
+# EMAIL_HOST = "smtp.mail.com"
+# EMAIL_PORT = "587"
+# EMAIL_HOST_USER = "pavlo.olshansky@gmail.com"
+# EMAIL_HOST_PASSWORD = "123zxc456asd789qwe+!"
+# EMAIL_USE_TLS = True
+# DEFAULT_FROM_EMAIL = "Helpdesk <pavlo2.olshansky@gmail.com>"
+
+
+# #  To help obfuscating comments before they are sent for confirmation.
+# COMMENTS_XTD_SALT = (b"Timendi causa est nescire. "
+#                      b"Aequam memento rebus in arduis servare mentem.")
+
+# # Source mail address used for notifications.
+# COMMENTS_XTD_FROM_EMAIL = "noreply@example.com"
+
+# # Contact mail address to show in messages.
+# COMMENTS_XTD_CONTACT_EMAIL = "helpdesk@example.com"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -157,7 +193,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
     )
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
 # Stripe Key Settings
 STRIPE_SECRET_KEY = get_env_variable("STRIPE_SECRET_KEY")
@@ -169,32 +206,65 @@ SUBSCRIPTION_PRICE = 1000
 LOGIN_REDIRECT_URL = '/account/list/'
 
 # django-pipeline config
-STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
-PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.jsmin.JSMinCompressor'
-PIPELINE_CSS_COMPRESSOR = 'mvp.plans.CSSMin.CSSCompressor'
+# STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+# PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.jsmin.JSMinCompressor'
+# PIPELINE_CSS_COMPRESSOR = 'mvp.plans.CSSMin.CSSCompressor'
 
 
-PIPELINE_CSS = {
-    'site_css': {
-        'source_filenames': (
-          'css/font-awesome.min.css',
-          'css/main.css',
-        ),
-        'extra_context': {
-            'media': 'screen',
+# PIPELINE_CSS = {
+#     'site_css': {
+#         'source_filenames': (
+#           'css/font-awesome.min.css',
+#           'css/main.css',
+#         ),
+#         'extra_context': {
+#             'media': 'screen',
+#         },
+#         'output_filename': 'css/site_css.css',
+#     },
+# }
+
+# PIPELINE_JS = {
+#     'site_js': {
+#         'source_filenames': (
+#           'js/jquery.min.js',
+#           'js/main.js',
+#           'js/skel.min.js',
+#           'js/util.js',
+#         ),
+#         'output_filename': 'js/site_css.js',
+#     }
+# }
+PIPELINE = {
+    'STYLESHEETS': {
+        'site_css': {
+            'source_filenames': (
+              'css/font-awesome.min.css',
+              'css/main.css',
+              'css/images/overlay.png',
+            ),
+            'extra_context': {
+                'media': 'screen',
+            },
+            'output_filename': 'css/site_css.css',
         },
-        'output_filename': 'css/site.css',
     },
-}
-
-PIPELINE_JS = {
-    'site_js': {
-        'source_filenames': (
-          'js/jquery.min.js',
-          'js/main.js',
-          'js/skel.min.js',
-          'js/util.js',
-        ),
-        'output_filename': 'js/site.js',
+    'JAVASCRIPT': {
+        'site_js': {
+            'source_filenames': (
+              'js/jquery.min.js',
+              'js/main.js',
+              'js/skel.min.js',
+              'js/util.js',
+            ),
+            'output_filename': 'js/site_css.js',
+        }
     }
 }
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'pipeline.finders.PipelineFinder',
+)
+

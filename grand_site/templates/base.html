@@ -1,9 +1,10 @@
 <!DOCTYPE HTML>
 {% load static %}
+{% load comments %}
 
 {% block head_css_site %}
-    {% load compressed %}
-    {% compressed_css 'site_css' %}
+    {% load pipeline %}
+    {% stylesheet 'site_css' %}
 {% endblock head_css_site %}
 <!--
 	Epilogue by TEMPLATED
@@ -16,6 +17,8 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="{{ STATIC_URL }}css/main.css" />
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="/favicon.ico" type="image/x-icon">
 	</head>
 	<body>
 
@@ -129,6 +132,19 @@
 						</ul>
 					</section>
 
+<!-- 
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.9&appId=2179208915638310";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+<div class="fb-comments" data-href="https://www.facebook.com/photo.php?fbid=1917527575135654&amp;set=a.1377811495773934.1073741827.100006352894363&amp;type=3&amp;theater" data-numposts="5"></div>
+ -->
 				<!-- Footer -->
 				{% block footer %}
 					<footer id="footer">
@@ -155,7 +171,7 @@
 			{% block footer_javascript_page %}{% endblock footer_javascript_page %}
 			
 			{% block footer_javascript_site %}
-			    {% compressed_js 'site_js' %}
+			    {% javascript 'site_js' %}
 			{% endblock footer_javascript_site %}
 
 	</body>

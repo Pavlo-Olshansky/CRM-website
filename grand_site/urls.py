@@ -25,6 +25,9 @@ from contacts.views import ContactDelete
 from communications.views import comm_cru
 from communications.views import CommDelete
 
+# from django_comments_xtd import LatestCommentFeed
+
+
 
 admin.autodiscover()
 
@@ -80,6 +83,12 @@ urlpatterns = [
 
     url(r'^comm/(?P<pk>[\w-]+)/delete/$',
         CommDelete.as_view(), name='comm_delete'),
+
+
+    url(r'^comments/', include('django_comments.urls')),
+
+    # url(r'^comments/', include('django_comments_xtd.urls')),
+    # url(r'^feeds/comments/$', LatestCommentFeed(), name='comments-feed'),    
 
 
 

@@ -10,7 +10,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 
 from .models import Account
-from .forms import AccountForm
+from .forms import AccountForm, CommentForm
 from contacts.models import Contact
 from communications.models import Communication
 from communications.forms import CommunicationForm
@@ -55,13 +55,26 @@ def account_detail(request, uuid):
     communications = Communication.objects.filter(
         account=account).order_by('-created_on')
 
-    form = CommunicationForm()
+
+    if request.method == 'POST' and 'new_comment' in request.POST:
+        comment_form = CommentForm(request.POST, prefix="comment")
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.account = account
+            comment.save()
+            redirect_url = reverse('account_detail', args=(account.uuid,))
+            return HttpResponseRedirect(redirect_url)
+
+    else:
+        comment_form = CommentForm(prefix="comment")
+        form = CommunicationForm()
 
     variables = {
         'account': account,
         'contacts': contacts,
         'communications': communications,
-        'form': form
+        'form': form,
+        'comment_form': comment_form,
     }
     
     return render(request, 'accounts/account_detail.html', variables)

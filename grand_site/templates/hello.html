@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load comments %}
+{% block title %}My Hello Page{% endblock %}
+{% block content %}
+
+<p>
+   Our Dreamreal Entry:
+   <p><strong>Name :</strong> {{dreamreal.name}}</p>
+   <p><strong>Website :</strong> {{dreamreal.website}}</p>
+   <p><strong>Phone :</strong> {{dreamreal.phonenumber}}</p>
+   <p><strong>Number of comments :<strong> 
+   {% get_comment_count for dreamreal as comment_count %} {{ comment_count }}</p>
+   <p>List of comments :</p>
+   {% render_comment_list for dreamreal %}
+</p>
+
+{% render_comment_form for dreamreal %}
+{% endblock %}
