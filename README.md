@@ -1,7 +1,13 @@
 # CRM-website
 
+> Website for registrate companies/organizations/etc deployed [here](https://my-grand-site-countinue.herokuapp.com).
 
-> Website for registrate companies/organizations/etc deployed on free hosting [here](https://my-grand-site-countinue.herokuapp.com/).
+* Developed fixtures
+  * Login / Registration
+  * CRUD operations with company creation
+  * CRUD operations with contacts to each company
+  * CRUD operations with meetings to each company
+  * Comment model
 
 ## Getting Started
 
