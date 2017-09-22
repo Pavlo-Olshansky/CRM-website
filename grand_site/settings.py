@@ -60,9 +60,14 @@ INSTALLED_APPS = [
     # 'social_django',
     
     # 'django_comments',
-    # 'django.contrib.sites',
+    'disqus',
+    'django.contrib.sites',
 ]
-# SITE_ID = 2
+
+
+# from django.contrib.sites.models import Site
+# SITE_ID = Site.objects.get_current()
+SITE_ID = 1
 # COMMENTS_APP = 'django_comments'
 
 # $> ./manage.py shell
@@ -298,4 +303,7 @@ LOGIN_REDIRECT_URL = '/account/list/'
 #     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #     'pipeline.finders.PipelineFinder',
 # )
+
+DISQUS_API_KEY = 'kAABHYwLwqXcTYlxHF4tOmmTOZ2UFwjyfPXmsHJCHVhap8opi6SRUFoIXbaK6vcj'
+DISQUS_WEBSITE_SHORTNAME = 'localhost'
 
